@@ -49,6 +49,3 @@ size_flags_horizontal = 3
 [node name="ColorRect3" type="ColorRect" parent="HSplitContainer/Panel2/HBoxContainer" unique_id=1784888511]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=691738295]
-unique_name_in_owner = true
