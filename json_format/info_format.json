@@ -1,0 +1,14 @@
+{
+  "record": {
+    "sensors": {
+      "temperature": {
+        "value": 0,
+        "unit": "ºC"
+      },
+      "humidity": {
+        "value": 0,
+        "unit": "%"
+      }
+    }
+  }
+}
