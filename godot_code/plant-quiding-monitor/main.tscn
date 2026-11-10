@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dtiyiyv7hrry0"]
+
+[ext_resource type="Script" uid="uid://dm2j7hf7tbjn6" path="res://main.gd" id="1_ig7tw"]
+
+[node name="main" type="Control" unique_id=1569736788]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ig7tw")
+
+[node name="HSplitContainer" type="VSplitContainer" parent="." unique_id=1086072071]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+dragging_enabled = false
+dragger_visibility = 2
+drag_area_highlight_in_editor = true
+
+[node name="Panel" type="Panel" parent="HSplitContainer" unique_id=1669371177]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel2" type="Panel" parent="HSplitContainer" unique_id=889500551]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/Panel2" unique_id=920001207]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HSplitContainer/Panel2/HBoxContainer" unique_id=1412080144]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect2" type="ColorRect" parent="HSplitContainer/Panel2/HBoxContainer" unique_id=1004782998]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect3" type="ColorRect" parent="HSplitContainer/Panel2/HBoxContainer" unique_id=1784888511]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=691738295]
+unique_name_in_owner = true
