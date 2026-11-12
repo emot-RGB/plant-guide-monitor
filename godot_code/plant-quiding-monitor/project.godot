@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="plant quiding monitor"
+config/name="plant guiding monitor"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 

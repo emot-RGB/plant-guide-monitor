@@ -1,3 +1,4 @@
+#include "esp32-hal.h"
 #pragma once
 
 
@@ -20,7 +21,7 @@ public:
   float humidity;
   float temperature;
 
-  HTSensor(){
+  HTSensor() {
     humidity = 0;
     temperature = 0;
   };
@@ -33,8 +34,14 @@ public:
     float h = dht.readHumidity();
     // Read temperature as Celsius (the default)
     float t = dht.readTemperature();
+
+    
+    static unsigned long error_cooldown;
     if (isnan(h) || isnan(t)) {
-      Serial.println(F("Failed to read from AM2302 sensor!"));
+      if (millis() - error_cooldown > 50000) {
+        Serial.println(F("Failed to read from AM2302 sensor!"));
+        error_cooldown = millis();
+      }
       return;
     }
     temperature = t;

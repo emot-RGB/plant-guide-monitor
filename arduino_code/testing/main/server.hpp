@@ -1,7 +1,7 @@
 #pragma once
 
+#include "sensor_humidade_temperatura.hpp"
 #include <Arduino.h>
-#include <WiFi.h>
 #include <WebServer.h>
 WebServer server(80);
 
@@ -9,11 +9,7 @@ WebServer server(80);
 
 
 
-const char* ssid = "ESP_Server";
-const char* password = "12345678";
 
-const char* ssidl = "kevin";
-const char* passwordl = "quevin1233";
 
 
 
@@ -107,7 +103,7 @@ void handleRootSensorDataRequest() {
   page.replace("%R%", String(Red));
   page.replace("%G%", String(Green));
   page.replace("%B%", String(Blue));
-  server.send(200, "text/json", page);
+  server.send(200, "text/html", page);
 }
 
 
@@ -125,28 +121,7 @@ void handleSetRGB() {
 
 
 
-void setup() {
-  Serial.begin(115200);
-  // Create a Wifi hotspot
-  WiFi.mode(WIFI_MODE_APSTA);
-  WiFi.softAP(ssid, password);
-  Serial.println("Access Point Started");
-  // Print the IP address of the server
-  Serial.print("IP Address: ");
-  Serial.println(WiFi.softAPIP());
-
-  WiFi.begin(ssidl, passwordl);
-  // Print the IP address of the server
-  do {
-    delay(2000);
-    Serial.println("._.");
-  } while (WiFi.status() != WL_CONNECTED);
-  Serial.println("Local network Access Point Started");
-  Serial.print("Local IP Address: ");
-  Serial.println(WiFi.localIP());
-
-
-  // Set the functions that handle requests to the root webpage and to the /setRGB endpoint
+void setup_bruh() {
   server.on("/", handleRoot);
   server.on("/setRGB", handleSetRGB);
   // Start the webserver
@@ -156,7 +131,49 @@ void setup() {
 
 
 
-void loop() {
-  // handle requests to the webserver
-  server.handleClient();
-}
+
+
+
+
+
+
+class SystemControlServer {
+public:
+
+  HTSensor htsensor;
+  float soil_humidity;
+
+
+
+  SystemControlServer() {}
+
+  void begin() {
+
+    htsensor.begin();
+
+
+
+    server.on("/", handleRoot);
+    server.on("/setRGB", handleSetRGB);
+    server.on("/get_latest_record", [this]() {
+      this->send_latest_record();
+    });
+    // Start the webserver
+    server.begin();
+    Serial.println("HTTP server started");
+  }
+
+  void handleClient() {
+    server.handleClient();
+    htsensor.update();
+  }
+
+private:
+
+  void send_latest_record() {
+    String message = jsonSensorData;
+    message.replace("tv", String(htsensor.temperature));
+    message.replace("hv", String(htsensor.humidity));
+    server.send(200, "text/plain", message);
+  }
+};
