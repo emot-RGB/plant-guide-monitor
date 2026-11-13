@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 
 
 func get_value():
-	http_request.request("http://192.168.1.226/get_latest_record")
+	http_request.request(%LineEdit.text)
 	
 	
 

@@ -18,7 +18,10 @@ public:
     pinMode(SHPIN, INPUT);
   };
   void update() {
-   soil_humidity =  analogRead(SHPIN);
+    soil_humidity = map(analogRead(SHPIN), 65, 2350, 0, 100);
+    if (soil_humidity < 0)
+      soil_humidity = 0;
+    else if (soil_humidity > 100) soil_humidity = 100;
   };
   void println() {
     Serial.print("Soil Humidity: ");

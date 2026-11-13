@@ -15,10 +15,10 @@ WifiConfig wifi;
 SystemControlServer system_server;
 
 void setup() {
-  wifi.begin();
   Serial.begin(9600);
   Serial.println(F("AM2302/DHT22 Sensor Test"));
 
+  wifi.begin();
   system_server.begin();
 }
 
