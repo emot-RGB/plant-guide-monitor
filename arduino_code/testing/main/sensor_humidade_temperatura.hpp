@@ -1,23 +1,17 @@
-#include "esp32-hal.h"
 #pragma once
 
-
-#include <Arduino.h>
 #include <Adafruit_Sensor.h>
+#include <Arduino.h>
 #include <DHT.h>
 
 #define DHTPIN 2       // Digital pin connected to the AM2302/DHT22 data pin
 #define DHTTYPE DHT22  // DHT 22 (AM2302)
-#pragma once
-#include <Arduino.h>
 
 DHT dht(DHTPIN, DHTTYPE);
-
 
 class HTSensor {
 
 public:
-
   float humidity;
   float temperature;
 
@@ -35,7 +29,6 @@ public:
     // Read temperature as Celsius (the default)
     float t = dht.readTemperature();
 
-    
     static unsigned long error_cooldown;
     if (isnan(h) || isnan(t)) {
       if (millis() - error_cooldown > 50000) {
@@ -48,17 +41,13 @@ public:
     humidity = h;
   };
   void println() {
-    Serial.print(F("Humidity: "));
+    Serial.print("Humidity: ");
     Serial.print(humidity);
-    Serial.print(F("%  Temperature: "));
+    Serial.print("%  Temperature: ");
     Serial.print(temperature);
-    Serial.print(F("°C / \n"));
+    Serial.print("°C / \n");
   };
 };
-
-
-
-
 
 // example code
 /*

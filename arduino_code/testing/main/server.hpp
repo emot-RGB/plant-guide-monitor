@@ -1,10 +1,10 @@
 #pragma once
 
 #include "sensor_humidade_temperatura.hpp"
+#include "sensor_humidade_solo.hpp"
 #include <Arduino.h>
 #include <WebServer.h>
 WebServer server(80);
-
 
 // HTML page template - What is displayed on browsers and respective actions
 const char jsonSensorData[] PROGMEM = R"rawliteral(
@@ -14,6 +14,10 @@ const char jsonSensorData[] PROGMEM = R"rawliteral(
           "temperature": {
             "value": tv,
             "unit": "ºC"
+          },
+          "soil-humidity": {
+            "value": shv,
+            "unit": "%"
           },
           "humidity": {
             "value": hv,
@@ -25,29 +29,20 @@ const char jsonSensorData[] PROGMEM = R"rawliteral(
 
 )rawliteral";
 
-
-
-
-
-
-
 class SystemControlServer {
 public:
-
   HTSensor htsensor;
+  SHSensor shsensor;
   float soil_humidity;
-
-
 
   SystemControlServer() {}
 
   void begin() {
 
     htsensor.begin();
+    shsensor.begin();
 
-    server.on("/get_latest_record", [this]() {
-      this->send_latest_record();
-    });
+    server.on("/get_latest_record", [this]() { this->send_latest_record(); });
     // Start the webserver
     server.begin();
     Serial.println("HTTP server started");
@@ -56,13 +51,14 @@ public:
   void handleClient() {
     server.handleClient();
     htsensor.update();
+    shsensor.update();
   }
 
 private:
-
   void send_latest_record() {
     String message = jsonSensorData;
     message.replace("tv", String(htsensor.temperature));
+    message.replace("shv", String(shsensor.soil_humidity));
     message.replace("hv", String(htsensor.humidity));
     server.send(200, "text/plain", message);
   }

@@ -43,17 +43,47 @@ grow_vertical = 2
 [node name="TemperatureLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer" unique_id=2138291320]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "bruh"
 
 [node name="HumidityLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer" unique_id=445640548]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "bruh"
 
 [node name="SoilHumidityLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer" unique_id=1637819920]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "bruh"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/Panel/VBoxContainer" unique_id=96111643]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1447182686]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "max : "
+
+[node name="max" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HBoxContainer" unique_id=387599637]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/Panel/VBoxContainer" unique_id=26316925]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=1695861268]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "min : "
+
+[node name="min" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=525072405]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "30000000"
 
 [node name="Panel2" type="Panel" parent="HSplitContainer" unique_id=889500551]
 custom_minimum_size = Vector2(0, 150)

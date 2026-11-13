@@ -8,6 +8,12 @@ var current_record:Record = Record.new():
 		%TemperatureLabel.text =  str(a.temperature.value) + a.temperature.unit
 		%HumidityLabel.text = str(a.humidity.value) + a.humidity.unit
 		%SoilHumidityLabel.text = str(a.soil_humidity.value) + a.humidity.unit
+		var max = int(%max.text)
+		if a.soil_humidity.value > max:
+			%max.text = str(a.soil_humidity.value)
+		var min = int(%min.text)
+		if a.soil_humidity.value < min:
+			%min.text = str(a.soil_humidity.value)
 		current_record = a
 	get:
 		return current_record

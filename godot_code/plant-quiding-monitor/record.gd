@@ -39,7 +39,7 @@ func from_json_str(json_string:String)-> Record:
 		humidity.value = json["record"]["sensors"]["humidity"]["value"]
 		humidity.unit = json["record"]["sensors"]["humidity"]["unit"]
 		
-		soil_humidity.value = json["record"]["sensors"]["temperature"]["value"]
-		soil_humidity.unit = json["record"]["sensors"]["temperature"]["unit"]
+		soil_humidity.value = json["record"]["sensors"]["soil-humidity"]["value"]
+		soil_humidity.unit = json["record"]["sensors"]["soil-humidity"]["unit"]
 	
 	return self
