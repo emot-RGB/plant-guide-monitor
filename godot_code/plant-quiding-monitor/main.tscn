@@ -42,7 +42,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "http://192.168.4.1/get_latest_record"
+text = "http://172.23.162.16/get_latest_record"
 
 [node name="TemperatureLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer" unique_id=2138291320]
 unique_name_in_owner = true

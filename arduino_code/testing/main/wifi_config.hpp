@@ -43,7 +43,7 @@ public:
     static unsigned long time;
     static bool connected;
     if (connected)return;
-    if (WiFi.status() != WL_CONNECTED && millis() - time > 1000) {
+    if (WiFi.status() != WL_CONNECTED && millis() - time > 10000) {
       Serial.println("no local network connected");
       time = millis();
 
