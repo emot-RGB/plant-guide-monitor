@@ -1,15 +1,5 @@
-
 #include "wifi_config.hpp"
 #include "server.hpp"
-
-
-
-
-
-
-
-
-
 
 WifiConfig wifi;
 SystemControlServer system_server;
@@ -24,7 +14,7 @@ void setup() {
 
 void loop() {
   system_server.handleClient();
- 
+
   wifi.update();
 
 }

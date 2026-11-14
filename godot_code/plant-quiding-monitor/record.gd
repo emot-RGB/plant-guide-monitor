@@ -31,15 +31,16 @@ func from_json_str(json_string:String)-> Record:
   #}
 #}
 #"""
-	var json = JSON.parse_string(json_string)
-	if json:
-		temperature.value = json["record"]["sensors"]["temperature"]["value"]
-		temperature.unit = json["record"]["sensors"]["temperature"]["unit"]
-		
-		humidity.value = json["record"]["sensors"]["humidity"]["value"]
-		humidity.unit = json["record"]["sensors"]["humidity"]["unit"]
-		
-		soil_humidity.value = json["record"]["sensors"]["soil-humidity"]["value"]
-		soil_humidity.unit = json["record"]["sensors"]["soil-humidity"]["unit"]
+	if json_string.is_empty() == false:
+		var json:Dictionary = JSON.parse_string(json_string)
+		if json["record"]["sensors"]["temperature"]["unit"] != "":
+			temperature.value = json["record"]["sensors"]["temperature"]["value"]
+			temperature.unit = json["record"]["sensors"]["temperature"]["unit"]
+			
+			humidity.value = json["record"]["sensors"]["humidity"]["value"]
+			humidity.unit = json["record"]["sensors"]["humidity"]["unit"]
+			
+			soil_humidity.value = json["record"]["sensors"]["soil-humidity"]["value"]
+			soil_humidity.unit = json["record"]["sensors"]["soil-humidity"]["unit"]
 	
 	return self
