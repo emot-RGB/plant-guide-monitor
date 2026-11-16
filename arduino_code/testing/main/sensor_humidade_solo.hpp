@@ -1,5 +1,5 @@
-#include "esp32-hal-adc.h"
-#include "esp32-hal-gpio.h"
+//#include "esp32-hal-adc.h"
+//#include "esp32-hal-gpio.h"
 #pragma once
 
 #include <Arduino.h>

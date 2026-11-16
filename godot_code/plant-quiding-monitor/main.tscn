@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dm2j7hf7tbjn6" path="res://main.gd" id="1_ig7tw"]
 
+[sub_resource type="FontVariation" id="FontVariation_ocnln"]
+
+[sub_resource type="Theme" id="Theme_bk7jt"]
+default_font = SubResource("FontVariation_ocnln")
+default_font_size = 40
+
 [node name="main" type="Control" unique_id=1569736788]
 layout_mode = 3
 anchors_preset = 15
@@ -9,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_bk7jt")
 script = ExtResource("1_ig7tw")
 
 [node name="HSplitContainer" type="VSplitContainer" parent="." unique_id=1086072071]
@@ -35,28 +42,54 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="HSplitContainer/Panel/VBoxContainer" unique_id=1431452811]
+custom_minimum_size = Vector2(0, 63)
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/Panel/VBoxContainer" unique_id=1641401225]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="LineEdit" type="LineEdit" parent="HSplitContainer/Panel/VBoxContainer" unique_id=274472532]
-unique_name_in_owner = true
-layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "http://172.23.162.16/get_latest_record"
+text = "http://192.168.4.1/get_latest_record"
+backspace_deletes_composite_character_enabled = true
+wrap_mode = 1
+autowrap_mode = 1
+scroll_smooth = true
 
-[node name="TemperatureLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer" unique_id=2138291320]
+[node name="THBoxContainer" type="HBoxContainer" parent="HSplitContainer/Panel/VBoxContainer" unique_id=735539080]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel/VBoxContainer/THBoxContainer" unique_id=1635029619]
+layout_mode = 2
+text = "Temperature: "
+
+[node name="TemperatureLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer/THBoxContainer" unique_id=2138291320]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "bruh"
 
-[node name="HumidityLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer" unique_id=445640548]
+[node name="HHBoxContainer3" type="HBoxContainer" parent="HSplitContainer/Panel/VBoxContainer" unique_id=966798912]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HHBoxContainer3" unique_id=2040386853]
+layout_mode = 2
+text = "Humidity: "
+
+[node name="HumidityLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HHBoxContainer3" unique_id=445640548]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "bruh"
 
-[node name="SoilHumidityLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer" unique_id=1637819920]
+[node name="SHHBoxContainer3" type="HBoxContainer" parent="HSplitContainer/Panel/VBoxContainer" unique_id=60681929]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel/VBoxContainer/SHHBoxContainer3" unique_id=568039626]
+layout_mode = 2
+text = "Soil humidity: "
+
+[node name="SoilHumidityLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer/SHHBoxContainer3" unique_id=1637819920]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -94,6 +127,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Panel2" type="Panel" parent="HSplitContainer" unique_id=889500551]
+visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 

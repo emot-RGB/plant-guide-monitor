@@ -31,7 +31,8 @@ func from_json_str(json_string:String)-> Record:
   #}
 #}
 #"""
-	if json_string.is_empty() == false:
+	if json_string.is_empty() == false and json_string.split("\n").size() > 2:
+		print(json_string)
 		var json:Dictionary = JSON.parse_string(json_string)
 		if json["record"]["sensors"]["temperature"]["unit"] != "":
 			temperature.value = json["record"]["sensors"]["temperature"]["value"]

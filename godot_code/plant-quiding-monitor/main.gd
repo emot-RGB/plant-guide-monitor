@@ -3,6 +3,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 
+@onready var url_label:TextEdit = %TextEdit
+
 var current_record:Record = Record.new():
 	set(a):
 		%TemperatureLabel.text =  str(a.temperature.value) + a.temperature.unit
@@ -40,7 +42,7 @@ func _process(delta: float) -> void:
 
 
 func get_value():
-	http_request.request(%LineEdit.text)
+	http_request.request(url_label.text.split("\n",false)[0])
 
 
 func request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray):

@@ -31,9 +31,10 @@ public:
     Serial.println("\n\nesp32 host network");
     // Print the IP address of the server
     Serial.print("IP Address: ");
-    Serial.println(WiFi.softAPIP());
+    Serial.println(WiFi.softAPIP()); //IP Address: 192.168.4.1
 
     WiFi.begin(ssidl, passwordl);
+    
     // Print the IP address of the server
   }
 
