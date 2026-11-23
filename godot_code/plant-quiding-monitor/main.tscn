@@ -122,6 +122,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "30000000"
 
+[node name="count" type="Label" parent="HSplitContainer/Panel/VBoxContainer" unique_id=1116545489]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
 [node name="Panel2" type="Panel" parent="HSplitContainer/Panel/VBoxContainer" unique_id=1132803366]
 layout_mode = 2
 size_flags_vertical = 3

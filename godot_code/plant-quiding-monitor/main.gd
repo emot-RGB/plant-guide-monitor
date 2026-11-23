@@ -24,13 +24,12 @@ var current_record:Record = Record.new():
 @onready var http_request:HTTPRequest = %HTTPRequest
 func _ready() -> void:
 	http_request.connect("request_completed",request_completed)
-	get_value()
 	pass # Replace with function body.
 
 
 
 var timer:float 
-
+var timer_done:= true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer += delta
@@ -38,6 +37,18 @@ func _process(delta: float) -> void:
 		if http_request.get_http_client_status() == HTTPClient.Status.STATUS_DISCONNECTED:
 			get_value()
 		timer=0
+	
+	var add_to_counter = func ():
+		%count.text = str(int(%count.text) + 1)
+	
+	
+	if timer_done:
+		timer_done = false
+		get_tree().create_timer(1.0).timeout.connect(func():
+			add_to_counter.call()
+			timer_done = true
+		)
+	
 	pass
 
 
