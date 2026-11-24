@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://ccrtcqu7083o5"]
+
+[ext_resource type="Script" uid="uid://m08sidg30i2d" path="res://graph_record/graph_record.gd" id="1_ovtg2"]
+[ext_resource type="PackedScene" uid="uid://800cehy3swpv" path="res://graph_record/graph_bar.tscn" id="2_7yqe6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocnln"]
+bg_color = Color(0.2788852, 0.60869366, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_detail = 20
+
+[sub_resource type="Theme" id="Theme_7yqe6"]
+Panel/styles/panel = SubResource("StyleBoxFlat_ocnln")
+
+[node name="GraphRecord" type="Control" unique_id=256770276]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ovtg2")
+max_y = 50
+graph_bar_scene = ExtResource("2_7yqe6")
+
+[node name="Panel" type="Panel" parent="." unique_id=374740177]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HScrollBar" type="HScrollBar" parent="Panel" unique_id=1691093486]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel" unique_id=1535106299]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7yqe6")
+vertical_scroll_mode = 3
+
+[node name="ColumHolder" type="HBoxContainer" parent="Panel/ScrollContainer" unique_id=1426366686]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Timer" type="Timer" parent="." unique_id=1184563752]
+autostart = true
+
+[node name="Button" type="Button" parent="." unique_id=629448239]
+layout_mode = 0
+offset_left = 576.0
+offset_right = 648.0
+offset_bottom = 64.0
+toggle_mode = true
+
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

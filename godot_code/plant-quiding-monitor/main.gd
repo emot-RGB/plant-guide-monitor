@@ -7,6 +7,11 @@ extends Control
 
 var current_record:Record = Record.new():
 	set(a):
+		
+		%TemperatureGraphRecord.add_value(a.temperature.value)
+		%HumidityGraphRecord.add_value(a.humidity.value)
+		%SoilHumidityGraphRecord.add_value(a.soil_humidity.value)
+		
 		%TemperatureLabel.text =  str(a.temperature.value) + a.temperature.unit
 		%HumidityLabel.text = str(a.humidity.value) + a.humidity.unit
 		%SoilHumidityLabel.text = str(a.soil_humidity.value) + a.humidity.unit
@@ -33,7 +38,7 @@ var timer_done:= true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer += delta
-	if timer > 0.1:
+	if timer > 5:
 		if http_request.get_http_client_status() == HTTPClient.Status.STATUS_DISCONNECTED:
 			get_value()
 		timer=0
@@ -57,6 +62,7 @@ func get_value():
 
 
 func request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray):
+	
 	var string:PackedStringArray = body.get_string_from_utf8().split("\n",false)
 	
 	if current_record:

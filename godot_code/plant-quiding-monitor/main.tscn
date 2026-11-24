@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dtiyiyv7hrry0"]
 
 [ext_resource type="Script" uid="uid://dm2j7hf7tbjn6" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://ccrtcqu7083o5" path="res://graph_record/graph_record.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://c2i33q5ivot3x" path="res://classes/sensor.gd" id="3_h2yge"]
 
 [sub_resource type="FontVariation" id="FontVariation_ocnln"]
 
@@ -29,11 +31,20 @@ dragging_enabled = false
 dragger_visibility = 2
 drag_area_highlight_in_editor = true
 
-[node name="Panel" type="Panel" parent="HSplitContainer" unique_id=1669371177]
+[node name="TabContainer" type="TabContainer" parent="HSplitContainer" unique_id=630417247]
 layout_mode = 2
 size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 1
+tabs_position = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Panel" unique_id=1742235556]
+[node name="RawValues" type="Panel" parent="HSplitContainer/TabContainer" unique_id=1669371177]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TabContainer/RawValues" unique_id=1742235556]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,11 +52,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="HSplitContainer/Panel/VBoxContainer" unique_id=1431452811]
+[node name="Panel" type="Panel" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer" unique_id=1431452811]
 custom_minimum_size = Vector2(0, 63)
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="HSplitContainer/Panel/VBoxContainer" unique_id=1641401225]
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer" unique_id=1641401225]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -56,80 +67,146 @@ wrap_mode = 1
 autowrap_mode = 1
 scroll_smooth = true
 
-[node name="THBoxContainer" type="HBoxContainer" parent="HSplitContainer/Panel/VBoxContainer" unique_id=735539080]
+[node name="THBoxContainer" type="HBoxContainer" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer" unique_id=735539080]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/Panel/VBoxContainer/THBoxContainer" unique_id=1635029619]
+[node name="Label" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer/THBoxContainer" unique_id=1635029619]
 layout_mode = 2
 text = "Temperature: "
 
-[node name="TemperatureLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer/THBoxContainer" unique_id=2138291320]
+[node name="TemperatureLabel" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer/THBoxContainer" unique_id=2138291320]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "bruh"
 
-[node name="HHBoxContainer3" type="HBoxContainer" parent="HSplitContainer/Panel/VBoxContainer" unique_id=966798912]
+[node name="HHBoxContainer3" type="HBoxContainer" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer" unique_id=966798912]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HHBoxContainer3" unique_id=2040386853]
+[node name="Label" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer/HHBoxContainer3" unique_id=2040386853]
 layout_mode = 2
 text = "Humidity: "
 
-[node name="HumidityLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HHBoxContainer3" unique_id=445640548]
+[node name="HumidityLabel" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer/HHBoxContainer3" unique_id=445640548]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "bruh"
 
-[node name="SHHBoxContainer3" type="HBoxContainer" parent="HSplitContainer/Panel/VBoxContainer" unique_id=60681929]
+[node name="SHHBoxContainer3" type="HBoxContainer" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer" unique_id=60681929]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/Panel/VBoxContainer/SHHBoxContainer3" unique_id=568039626]
+[node name="Label" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer/SHHBoxContainer3" unique_id=568039626]
 layout_mode = 2
 text = "Soil humidity: "
 
-[node name="SoilHumidityLabel" type="Label" parent="HSplitContainer/Panel/VBoxContainer/SHHBoxContainer3" unique_id=1637819920]
+[node name="SoilHumidityLabel" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer/SHHBoxContainer3" unique_id=1637819920]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "bruh"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/Panel/VBoxContainer" unique_id=96111643]
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer" unique_id=96111643]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1447182686]
+[node name="Label" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer/HBoxContainer" unique_id=1447182686]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "max : "
 
-[node name="max" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HBoxContainer" unique_id=387599637]
+[node name="max" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer/HBoxContainer" unique_id=387599637]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/Panel/VBoxContainer" unique_id=26316925]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer" unique_id=26316925]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=1695861268]
+[node name="Label" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer/HBoxContainer2" unique_id=1695861268]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "min : "
 
-[node name="min" type="Label" parent="HSplitContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=525072405]
+[node name="min" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer/HBoxContainer2" unique_id=525072405]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "30000000"
 
-[node name="count" type="Label" parent="HSplitContainer/Panel/VBoxContainer" unique_id=1116545489]
+[node name="count" type="Label" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer" unique_id=1116545489]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="Panel2" type="Panel" parent="HSplitContainer/Panel/VBoxContainer" unique_id=1132803366]
+[node name="Panel2" type="Panel" parent="HSplitContainer/TabContainer/RawValues/VBoxContainer" unique_id=1132803366]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="BarGraphs" type="Panel" parent="HSplitContainer/TabContainer" unique_id=1240706756]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TabContainer/BarGraphs" unique_id=950216590]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer" unique_id=992732772]
+custom_minimum_size = Vector2(0, 63)
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer" unique_id=542178599]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+text = "http://10.24.222.16/get_latest_record"
+backspace_deletes_composite_character_enabled = true
+wrap_mode = 1
+autowrap_mode = 1
+scroll_smooth = true
+
+[node name="Label" type="Label" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer" unique_id=1923523636]
+layout_mode = 2
+text = "Temperature: "
+
+[node name="THBoxContainer" type="HBoxContainer" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer" unique_id=905711585]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TemperatureGraphRecord" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer/THBoxContainer" unique_id=256770276 instance=ExtResource("2_0xm2m")]
+unique_name_in_owner = true
+layout_mode = 2
+max_y = 40
+
+[node name="Label2" type="Label" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer" unique_id=131010447]
+layout_mode = 2
+text = "Humidity: "
+
+[node name="HHBoxContainer3" type="HBoxContainer" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer" unique_id=1304747384]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HumidityGraphRecord" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer/HHBoxContainer3" unique_id=1874235262 instance=ExtResource("2_0xm2m")]
+unique_name_in_owner = true
+layout_mode = 2
+max_y = 100
+
+[node name="Label3" type="Label" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer" unique_id=1496736103]
+layout_mode = 2
+text = "Soil humidity: "
+
+[node name="SHHBoxContainer3" type="HBoxContainer" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer" unique_id=1434996974]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SoilHumidityGraphRecord" parent="HSplitContainer/TabContainer/BarGraphs/VBoxContainer/SHHBoxContainer3" unique_id=133395840 instance=ExtResource("2_0xm2m")]
+unique_name_in_owner = true
+layout_mode = 2
+max_y = 100
 
 [node name="Panel2" type="Panel" parent="HSplitContainer" unique_id=889500551]
 visible = false
@@ -159,3 +236,7 @@ size_flags_horizontal = 3
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=2073518473]
 unique_name_in_owner = true
 timeout = 1.0
+
+[node name="Temperature_sensor" type="Node" parent="." unique_id=529316846]
+script = ExtResource("3_h2yge")
+metadata/_custom_type_script = "uid://c2i33q5ivot3x"
